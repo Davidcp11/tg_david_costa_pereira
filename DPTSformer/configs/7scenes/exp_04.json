@@ -1,0 +1,56 @@
+{
+    "data": {
+        "data_dpath": "C:/workspace/data/7scenes",
+        "dataset": "7scenes",
+        "normalize_gt": false,
+        "estimate_depth": false,
+        "read_depth": true,
+        "dataset_name_norm": "7scenes",
+        "bsize": 4,
+        "val_split": 0.1,
+        "window_size": 3,
+        "overlap": 2,
+        "num_workers": 4
+    },
+
+    "model": {
+        "spm": true,
+        "DEIT_size": "custom",
+        "patch_size": 16,
+        "embed_dim": 384,
+        "depth": 6,
+        "num_heads": 12,
+        "image_size": [240, 320],
+        "attention_type": "divided_space_time",
+        "dim_head": 256,
+        "attn_dropout": 0.1,
+        "ff_dropout": 0.1,
+        "pretrained_ViT": false,
+        "vit_layers": [0, 1, 2, 3]
+    },
+
+    "optimizer": {
+        "method": "AdamW",
+        "lr": 1e-4,
+        "momentum": 0.9,
+        "weight_decay": 1e-4
+    },
+
+    "scheduler": {
+        "method": "OneCycleLR"
+    },
+    
+    "training": {
+        "epoch": 250,
+        "pose_loss": "w_mse",  
+        "lambda_t": 1.0,
+        "lambda_rot": 50.0,
+        "depth_loss": "ssi_loss",
+        "ssi_alpha": 1.0
+    },
+
+    "checkpoint": {
+        "checkpoint_dpath": "checkpoints/7scenes",
+        "model_init_fpath": "checkpoints/7scenes/exp_01/checkpoint_e182.pth"
+    }
+}

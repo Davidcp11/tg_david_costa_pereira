@@ -1,0 +1,14 @@
+Sequence: 	 MH_03_medium 
+Trans. err. (%): 	 0.000 
+Rot. err. (deg/100m): 	 0.000 
+ATE (m): 	 0.148 
+RPE (m): 	 0.015 
+RPE (deg): 	 5.492 
+
+Sequence: 	 MH_05_difficult 
+Trans. err. (%): 	 0.000 
+Rot. err. (deg/100m): 	 0.000 
+ATE (m): 	 0.191 
+RPE (m): 	 0.011 
+RPE (deg): 	 2.695 
+

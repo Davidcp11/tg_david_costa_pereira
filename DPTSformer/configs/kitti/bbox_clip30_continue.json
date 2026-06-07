@@ -1,0 +1,62 @@
+{
+    "data": {
+        "data_dpath": "/Users/davidcostapereira/work/ITA/TG/TG/data/kitti",
+        "dataset": "kitti",
+        "dataset_name_norm": "kitti",
+        "normalize_gt": true,
+        "estimate_depth": true,
+        "training_sequences": ["00", "02", "08", "09"],
+        "test_sequences": ["01", "03", "04", "05", "06", "07", "10"],
+        "bsize": 2,
+        "val_split": 0.1,
+        "window_size": 3,
+        "overlap": 2,
+        "num_workers": 0,
+        "image_size": [192, 640],
+        "depth_clip_max": 30.0
+    },
+
+    "model": {
+        "spm": true,
+        "DEIT_size": "custom",
+        "patch_size": 16,
+        "embed_dim": 384,
+        "depth": 6,
+        "num_heads": 12,
+        "image_size": [192, 640],
+        "attention_type": "divided_space_time",
+        "dim_head": 256,
+        "attn_dropout": 0.1,
+        "ff_dropout": 0.1,
+        "pretrained_ViT": false,
+        "vit_layers": [0, 1, 2, 3]
+    },
+
+    "optimizer": {
+        "method": "AdamW",
+        "lr": 5e-5,
+        "momentum": 0.9,
+        "weight_decay": 1e-4
+    },
+
+    "scheduler": {
+        "method": "CosineAnnealingLR",
+        "T_max": 100,
+        "eta_min": 1e-6
+    },
+
+    "training": {
+        "epoch": 150,
+        "pose_loss": "camera_pose_loss",
+        "lambda_t": -1.0,
+        "lambda_rot": -1.0,
+        "depth_loss": "ssi_loss",
+        "ssi_alpha": 0.5,
+        "depth_bbox_norm": [0.3784, 0.9761, 0.1582, 0.8613]
+    },
+
+    "checkpoint": {
+        "checkpoint_dpath": "checkpoints/kitti/bbox_clip30_continue",
+        "model_init_fpath": "checkpoints/kitti/bbox_clip30/checkpoint_last.pth"
+    }
+}
